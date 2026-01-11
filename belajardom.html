@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar DOM</title>
+</head>
+<body>
+    <h1 id="uji_heading"></h1>
+    <p id="uji_paragraf"></p>
+
+    <script>
+        ujiheading = document.getElementById('uji_heading');
+        ujiparagraf = document.getElementById('uji_paragraf');
+        ujiinput = document.getElementById('uji_input');
+
+        ujiheading.innerHTML = "judul";
+        ujiparagraf.innerHTML = "paragraf";
+        ujiinput.value = "input";
+    </script>
+</body>
+</html>
+
+<body>
+    <h1 id="uji_heading"
+    onmouseover="sorot(this)"
+    onmouseout="keluarsorot(this)">
+        sorot dong! 
+    </h1>
+
+    <h2 id="uji_klik" onmousedown="tahan(this)" onmouseup="lepas(this)">
+        klik dong!
+    </h2>
+
+    <label for="uji_input">uji coba input</label><br>
+    <input type="text" id="uji_input" onkeyup="tiru()"><br>
+    <span id="uji_span"></span><br>
+    <button onclick="klik()">klik</button>
+    <button onclick="ulangi()">ulangi</button>
+
+        <script>
+            function sorot(obj){
+                obj.innerHTML = "sudah disorot";
+            }
+            function keluarsorot(obj){
+                obj.innerHTML = "sorot lagi dong!";
+            }
+            function tahan(obj){
+                obj.innerHTML = "lepasin";
+            }
+            function lepas(obj){
+                obj.innerHTML = "klik lagi dong!";
+            }
+            function klik(){
+                valueinput = document.getElementById('uji_input').value;
+                span = document.getElementById('uji_span');
+
+                if (valueinput == ""){
+                    span.innerHTML = "inputan kosong";
+                    span.style = "color:red";
+                } else {
+                    span.innerHTML = "input : '"+valueinput+"'";
+                    span.style = "color:blue";
+                }
+            }
+            function ulangi () {
+                document.getElementById('uji_input').value = "";
+                document.getElementById('uji_span').innerHTML = "";
+                document.getElementById('uji_heading').innerHTML = "sorot dong!";
+                document.getElementById('uji_klik').innerHTML = "klik dong!"
+            }
+            function tiru() {
+                valueinput = document.getElementById('uji_input').value;
+                document.getElementById('uji_span').innerHTML = valueinput;
+            }
+        </script>
+</body>
+
